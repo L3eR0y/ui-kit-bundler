@@ -1,0 +1,13 @@
+@use 'sass:math';
+
+@function strip-unit($num) {
+  @return math.div($num, ($num * 0 + 1));
+}
+
+@function em($pixels, $context: $browser-context) {
+  @return #{strip-unit($pixels)/$context}em;
+}
+
+@function rem($pixels, $context: $browser-context) {
+  @return #{math.div(strip-unit($pixels), $context)}rem;
+}
